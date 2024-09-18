@@ -1,7 +1,4 @@
 # PWNABLE
-
-Writeup các game trong mảng pwnable mình đã từng chơi qua từ beginner
-
 ## Bắt đầu
 Từ lúc mới chơi pwnable đến giờ, mình để ý các điều sau:
 - File thực thi chương trình trong linux thường có dạng ELF.              
@@ -9,16 +6,15 @@ Có thể kiểm tra định dạng file và 1 số thuộc tính của file b�
 ```
 file <đường dẫn file>
 ```
-- Hệ điều hành: mình hay dùng **Ubuntu** (Linux)
+- Hệ điều hành: mình hay dùng **kali** (Linux)
 - Tools:
     - **pwntools**: 1 thư viện pwn dành cho python, dùng để kết nối đến remote server, send và nhận payload, và 1 số chức năng khác phục vụ cho quá trình khai thác. Thường dùng để viết script khai thác lỗ hổng của chương trình chạy trên server sau khi đã tìm kiếm và phân tích xong lỗ hổng. [Github](https://github.com/Gallopsled/pwntools)
-    - **GDB-peda**: phiên bản nâng cấp của gdb, dùng để debug code trong file thực thi + 1 số tính năng khác phục vụ cho việc khai thác lỗ hổng phần mềm. [Github](https://github.com/longld/peda)
-    - **IDA Pro**: 1 công cụ Disassembler cho phép xem code assembly của file thực thi và chuyển chúng thàng mã giả C cho dễ đọc (phiên bản Pro). [Drive](https://drive.google.com/drive/folders/1-OPepikWwL2jYlkXgCq3ZmEl6mqXnvMU?usp=sharing)       
-    Vì phiên bản IDA mình dùng ở link trên là cho HĐH Windows nên thường mình sẽ cài thêm **Wine** vào Ubuntu để chạy được IDA.          
-    Sau khi cài IDA, sẽ có 2 phiển bản IDA trên hệ thống là IDA 32-bit và IDA 64-bit. Chú ý kiểm tra file thực thi mấy bit trước khi khởi động IDA.
+    - **GDB-pưndbg**: phiên bản nâng cấp của gdb, dùng để debug code trong file thực thi + 1 số tính năng khác phục vụ cho việc khai thác lỗ hổng phần mềm. [Github](https://github.com/pwndbg/pwndbg)
+    - **Ghidra**: 1 công cụ Disassembler cho phép xem code assembly của file thực thi và chuyển chúng thàng mã giả C cho dễ đọc
+    
 
-## Sử dụng GDB-peda
-- `pdis <tên hàm>`: hiển thị các lệnh có trong hàm đó. Lúc mới debug thì thường dùng `pdis main` để đặt breakpoints tại các hàm khác trong main cho dễ debug.
+## Sử dụng GDB-pwndbg
+- `disassemble <tên hàm>`: hiển thị các lệnh có trong hàm đó. Lúc mới debug thì thường dùng `disassemble main` để đặt breakpoints tại các hàm khác trong main cho dễ debug.
 - `print <tên hàm>`: in địa chỉ gốc của hàm
 - `checksec`: Xem các chế độ security của file thực thi bao gồm:
     - Canary: Lỗi tràn bộ đệm (disabled)
@@ -44,13 +40,8 @@ file <đường dẫn file>
     - **RSP** (64-bit) / **ESP** (32-bit): Stack Pointer, chứa địa chỉ trên cùng stack.
     - **RIP** (64-bit) / **EIP** (32-bit): Instruction Pointer, chứa địa chỉ lệnh tiếp theo cần thực hiện.
 
-## Sử dụng IDA PRO:
-Lúc mới vào lần đầu thì sẽ có nút lựa chọn **__New__**, nhấp vào đó rồi chọn loại file là __All files__, sau đó open file thực thi mà mình cần disassemble code. OK, Ok , OK...     
-Ở phần bên trái có liệt kê các hàm có trong chương trình. Double click vào hàm, sau đó tab 1-2 lần gì đó cho đến khi mình xem đã code mã giả C của hàm (Pseudo-code view).      
-Trong IDA PRO, bạn có thể double-click vào 1 biến (màu xanh) để truy cập đến nguồn xuất phát sâu xa của biến đó và xem giá trị / địa chỉ của biến...
-
 ## Sử dụng pwntools:
-Đầu tiên luôn phải import thư viện trước đã :v
+Đầu tiên luôn phải import thư viện trước đã =))
 ```
 from pwn import *
 ```
@@ -89,11 +80,8 @@ gdb.attach(r)
 ## Các kĩ thuật khai thác / lỗ hổng bảo mật mà mình đã học được
 
 - Pwn
-    - printf format string
+    - printf format string(hơi cùi)
     - Stack overflow (Canary disabled)
     - GOT overwrite (Canary enabled)
     - ret2shellcode (NX disabled)
     - ret2libc, ROPgadget (NX enabled)
-
-- Web
-    - SQL Injection
