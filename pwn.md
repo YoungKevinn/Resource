@@ -9,7 +9,7 @@ file <đường dẫn file>
 - Hệ điều hành: mình hay dùng **kali** (Linux)
 - Tools:
     - **pwntools**: 1 thư viện pwn dành cho python, dùng để kết nối đến remote server, send và nhận payload, và 1 số chức năng khác phục vụ cho quá trình khai thác. Thường dùng để viết script khai thác lỗ hổng của chương trình chạy trên server sau khi đã tìm kiếm và phân tích xong lỗ hổng. [Github](https://github.com/Gallopsled/pwntools)
-    - **GDB-pưndbg**: phiên bản nâng cấp của gdb, dùng để debug code trong file thực thi + 1 số tính năng khác phục vụ cho việc khai thác lỗ hổng phần mềm. [Github](https://github.com/pwndbg/pwndbg)
+    - **GDB-pwndbg**: phiên bản nâng cấp của gdb, dùng để debug code trong file thực thi + 1 số tính năng khác phục vụ cho việc khai thác lỗ hổng phần mềm. [Github](https://github.com/pwndbg/pwndbg)
     - **Ghidra**: 1 công cụ Disassembler cho phép xem code assembly của file thực thi và chuyển chúng thàng mã giả C cho dễ đọc
     
 
