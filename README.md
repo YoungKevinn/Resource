@@ -1,2 +1,0 @@
-# Resource
-source for everything
