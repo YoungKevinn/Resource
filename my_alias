@@ -1,6 +1,4 @@
-alias ll='ls -l'
-alias la='ls -A'
-alias l='ls -CF'
+alias gobusterz='gobuster dir -w /usr/share/dirbuster/wordlists/directory-list-lowercase-2.3-medium.txt -u $1'
 alias ll='ls -l'
 alias la='ls -A'
 alias l='ls -CF'
@@ -21,3 +19,8 @@ alias root='sudo -i'
 alias diff='colordiff'
 alias aslr_off='echo 0 | sudo tee /proc/sys/kernel/randomize_va_space'
 alias gcc_no_protections='gcc -fno-stack-protector -z execstack -no-pie'
+alias exploit='cp ~/pwn/official_template.py ./exploit.py && chmod +x exploit.py && subl exploit.py'
+alias ghidra_auto='python3 /home/youngkevinn/Tools/auto_ghidra.py'
+path_fuzz() {
+    ffuf -u "$1"FUZZ -w  /usr/share/dirbuster/wordlists/directory-list-lowercase-2.3-medium.txt  -mc 200
+}
